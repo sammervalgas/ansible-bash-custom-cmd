@@ -12,7 +12,9 @@ Requirements
 How to
 ------------------
 ```bash
-npm run provision
+$ git clone https://github.com/sammervalgas/ansible-bash-custom-cmd.git
+$ cd ansible-bash-custom-cmd
+$ npm run provision
 ```
 
 License
