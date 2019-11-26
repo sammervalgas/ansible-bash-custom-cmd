@@ -1,0 +1,53 @@
+---
+- name: "Create {{aliases_dir}}"
+  file:
+    path: "{{aliases_dir}}"
+    state: touch
+    mode: '0744'
+
+- name: 'Add Generic Aliases'
+  lineinfile:
+    dest: "{{aliases_dir}}"
+    line: "alias {{item}}"
+    state: present
+  with_items: "{{aliases.generic}}"
+
+- name: 'Add Git Aliases'
+  lineinfile:
+    dest: "{{aliases_dir}}"
+    line: "alias {{item}}"
+    state: present
+  with_items: "{{aliases.git}}"
+
+- name: 'Add Docker Aliases'
+  lineinfile:
+    dest: "{{aliases_dir}}"
+    line: "alias {{item}}"
+    state: present
+  with_items: "{{aliases.docker}}"
+
+- name: 'Add wildfly Aliases'
+  lineinfile:
+    dest: "{{aliases_dir}}"
+    line: "alias {{item}}"
+    state: present
+  with_items: "{{aliases_wildfly}}"
+
+- name: 'Add vagrant Aliases'
+  lineinfile:
+    dest: "{{aliases_dir}}"
+    line: "alias {{item}}"
+    state: present
+  with_items: "{{aliases.vagrant}}"
+
+- name: "Configure aliases on {{bash_profile}}"
+  lineinfile:
+    dest: "{{bash_profile}}"
+    line: "[ -f {{aliases_dir}} ] && . {{aliases_dir}}"
+    state: present
+
+- name: "Add inputrc autocomplete"
+  copy:
+    src: .inputrc
+    dest: ~/.inputrc
+    mode: '0744'

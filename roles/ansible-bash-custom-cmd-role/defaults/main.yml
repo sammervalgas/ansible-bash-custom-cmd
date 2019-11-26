@@ -1,0 +1,65 @@
+---
+# defaults file for ansible-bash-custom-cmd-role
+bash_profile: ~/.bash_profile
+aliases_dir: ~/.bash_aliases
+
+aliases_wildfly:  "{{aliases.wildfly}}"
+aliases_docker:   "{{aliases.docker}}"
+aliases_generic:  "{{aliases.generic}}"
+aliases_vagrant:  "{{aliases.vagrant}}"
+
+aliases:
+  generic:
+    - cl=clear
+    - rexit='history -c && echo null > ~/.bash_history && exit '
+    - l='ls'
+    - ll='ls -lh'
+    - la='ls -lah'
+    - ltra='ls -ltr'
+  git:
+    - ga='git add .'
+    - gb='git branch'
+    - gba='git branch -a'
+    - gcf='git config'
+    - gcfg='git config --global'
+    - gcfs='git config --system'
+    - grv='git remote -v'
+    - gst='git status'
+    - gps='git push -u $(grurl)'
+    - grurl='git config --get remote.origin.url'
+  docker:
+    - dps='docker ps'
+    - dpsa='docker ps -a'
+    - dpsqa='docker ps -qa '
+    - dim='docker images '
+    - dima='docker images -a'
+    - drm='docker rm '
+    - drmfa='docker rm -f $(docker ps -qa)'
+    - drmexited='docker rm -f $(dpsqa -f status=exited)'
+    - dinsp='docker inspect '
+    - dlogs='docker logs -f '
+    - dexec='docker exec -it '
+    - drun='docker run -d -i -t '
+    - dbuild='docker build -t '
+    - dstop='docker stop '
+    - dstart='docker start '
+    - drestart='docker restart '
+    - dstopa='docker stop $(dpsqa)'
+    - dstarta='docker start $(dpsqa)'
+  wildfly:
+    - wildf='sudo -S su wildfly'
+    - wf_start='sudo systemctl start wildfly'
+    - wf_stop='sudo systemctl stop wildfly'
+    - wf_restart='sudo systemctl restart wildfly'
+    - wf_status='sudo systemctl status wildfly'
+    - wf_edit_standalone='vi /opt/rh/wildfly/domain/configuration/standalone.xml'
+    - wf_goto_standalone='cd /opt/rh/wildfly/standalone'
+    - wf_edit_domain='vi /opt/rh/wildfly/domain/configuration/domain.xml'
+    - wf_goto_domain='cd /opt/rh/wildfly/domain'
+    - wf_goto_modules='cd /opt/rh/wildfly/modules'
+  vagrant:
+    - vup='vagrant up'
+    - vprovison='vagrant provision'
+    - vdestroy='vagrant destroy'
+    - vupdate='vagrant box update'
+    - vssh='vagrant ssh'

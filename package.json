@@ -1,0 +1,21 @@
+{
+  "name": "ansible-bash-custom-cmd",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "",
+    "email": "noreply@devbean.com.br"
+  },
+  "scripts": {
+      "provision": "ansible-playbook -i inventory/hosts provision.yml -v"
+    },
+    "keywords": [
+      "ansible",
+      "bash",
+      "custom",
+      "cmd",
+      "devops"
+    ],
+    "license": "MIT"
+  }
