@@ -59,6 +59,8 @@ aliases:
     - wf_goto_modules='cd /opt/rh/wildfly/modules'
   vagrant:
     - vup='vagrant up'
+    - vhalt='vagrant halt' # power off
+    - vsuspend='vagrant suspend' # hibernate machine
     - vprovison='vagrant provision'
     - vdestroy='vagrant destroy'
     - vupdate='vagrant box update'
